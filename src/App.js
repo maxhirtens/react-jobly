@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import JoblyApi from './api';
+import NavBar from "./NavBar";
+import Routes from "./routes/Routes"; 
+import { BrowserRouter, Route, Navigation, Switch } from "react-router-dom";
+import UserContext from "./auth/UserContext";
 import './App.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [companies, setCompanies] = useState([]);
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    async function getItem() {
+      setIsLoading(false);
+    }
+    getItem();
+  }, []);
+
+ if (isLoading) {
+    return <p className="loading">Loading &hellip;</p>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <UserContext.Provider>
+          <div className="App">
+            <NavBar />
+            <Routes />
+          </div>
+        </UserContext.Provider>
+      </BrowserRouter>
   );
 }
 
