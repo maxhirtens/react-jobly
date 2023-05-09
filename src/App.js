@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from './api';
-import NavBar from "./NavBar";
-import Routes from "./routes/Routes"; 
-import { BrowserRouter, Route, Navigation, Switch } from "react-router-dom";
+import NavBar from './navbar/NavBar';
+import RoutesList from "./routes/Routes";
+import { BrowserRouter } from "react-router-dom";
 import UserContext from "./auth/UserContext";
 import './App.css';
 
@@ -24,12 +24,10 @@ function App() {
 
   return (
       <BrowserRouter>
-        <UserContext.Provider>
           <div className="App">
             <NavBar />
-            <Routes />
+            <RoutesList />
           </div>
-        </UserContext.Provider>
       </BrowserRouter>
   );
 }

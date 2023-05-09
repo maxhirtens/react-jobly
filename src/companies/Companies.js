@@ -1,11 +1,11 @@
 import React from "react";
 
-function Home({companies}) {
+const Companies = () => {
   return (
     <section className="col-md-8">
-          <div>{companies}</div>
+          <div>Companies: {}</div>
     </section>
   );
 }
 
-export default Home;
+export default Companies;
