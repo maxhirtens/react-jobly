@@ -13,13 +13,13 @@ const RoutesList = () => {
       <div className="pt-5">
         
       <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/login" element={<LoginForm />}></Route>
-          <Route exact path="/signup" element={<SignupForm />}></Route>
-          <Route exact path="/companies" element={<Companies />}></Route>
-          <Route exact path="/companies/:name" element={<CompanyDetails />}></Route>
-          <Route exact path="/jobs" element={<Jobs />}></Route>
-          <Route exact path="/profile" element={<ProfileForm />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<LoginForm />}></Route>
+          <Route path="/signup" element={<SignupForm />}></Route>
+          <Route path="/companies" element={<Companies />}></Route>
+          <Route path="/companies/:name" element={<CompanyDetails />}></Route>
+          <Route path="/jobs" element={<Jobs />}></Route>
+          <Route path="/profile" element={<ProfileForm />}></Route>
           <Route path="/" element={<Navigate to="/" /> } />
         </Routes>
         

@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <div>
       <Navbar className="navbar">
-        <NavLink exact to="/" className="navbar-brand">
+        <NavLink to="/" className="navbar-brand">
           Jobly
         </NavLink>
 

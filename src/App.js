@@ -4,11 +4,11 @@ import NavBar from './navbar/NavBar';
 import RoutesList from "./routes/Routes";
 import { BrowserRouter } from "react-router-dom";
 import UserContext from "./auth/UserContext";
+import Loading from "./helpers/Loading";
 import './App.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [companies, setCompanies] = useState([]);
   const [user, setUser] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
   }, []);
 
  if (isLoading) {
-    return <p className="loading">Loading &hellip;</p>;
+    return <Loading />
   }
 
   return (
