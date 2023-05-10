@@ -46,3 +46,7 @@ body {
   font-size: 4rem;
   color: rgb(80, 126, 167);
 }
+
+li {
+    list-style: none;
+}

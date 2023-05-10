@@ -55,7 +55,7 @@ class JoblyApi {
     return res.company;
   }
 
-  // obviously, you'll add a lot here ...
+  
 }
 
 // for now, put token ("testuser" / "password" on class)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "../api";
 import Loading from "../helpers/Loading";
+import JobCard from "./JobCard";
 
 const Jobs = () => {
 
@@ -20,12 +21,20 @@ const Jobs = () => {
   }, []);
 
   if (!jobs) return <Loading />;
-  
-  console.log(jobs)
 
   return (
     <section className="col-md-8">
-      <div>{jobs.map(j => <p>{j.title}</p>)}</div>
+      <div>
+        {jobs.map(j => (
+          <JobCard
+              id={j.id}
+              companyName={j.companyName}
+              title={j.title}
+              salary={j.salary}
+              equity={j.equity}
+          />
+        ))}
+      </div>
     </section>
   );
 }
