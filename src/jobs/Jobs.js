@@ -4,19 +4,18 @@ import Loading from "../helpers/Loading";
 import JobCard from "./JobCard";
 
 const Jobs = () => {
-
   const [jobs, setJobs] = useState(null);
 
   // get jobs from API.
   async function searchJobs(name) {
-        console.log(`searching API for: ${name ?? 'all jobs'}`)
-        let jobs = await JoblyApi.getJobs(name)
-        setJobs(jobs);
+    console.log(`searching API for: ${name ?? "all jobs"}`);
+    let jobs = await JoblyApi.getJobs(name);
+    setJobs(jobs);
   }
 
   // get jobs from API on mount.
   useEffect(() => {
-    console.log('useEffect on Jobs Page');
+    console.log("useEffect on Jobs Page");
     searchJobs();
   }, []);
 
@@ -25,18 +24,18 @@ const Jobs = () => {
   return (
     <section className="col-md-8">
       <div>
-        {jobs.map(j => (
+        {jobs.map((j) => (
           <JobCard
-              id={j.id}
-              companyName={j.companyName}
-              title={j.title}
-              salary={j.salary}
-              equity={j.equity}
+            key={j.id}
+            companyName={j.companyName}
+            title={j.title}
+            salary={j.salary}
+            equity={j.equity}
           />
         ))}
       </div>
     </section>
   );
-}
+};
 
 export default Jobs;
