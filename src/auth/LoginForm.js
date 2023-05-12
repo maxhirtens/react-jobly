@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm({ login }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-  const [formErrors, setFormErrors] = useState([]);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     await login(formData);
+    navigate("/");
   }
 
   /** Update form data field */

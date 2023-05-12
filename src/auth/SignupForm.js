@@ -8,7 +8,6 @@ function SignupForm({ signup }) {
     lastName: "",
     email: "",
   });
-  const [formErrors, setFormErrors] = useState([]);
 
   async function handleSubmit(evt) {
     evt.preventDefault();

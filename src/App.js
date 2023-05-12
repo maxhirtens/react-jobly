@@ -6,12 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 import UserContext from "./auth/UserContext";
 import Loading from "./helpers/Loading";
 import { decodeToken } from "react-jwt";
+import useLocalStorage from "./hooks/useLocalStorage";
 import "./App.css";
+
+// key for localStorage.
+// why do i need export here?
+export const TOKEN_KEY = "jobly-token";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(JoblyApi.token);
+  const [token, setToken] = useLocalStorage(TOKEN_KEY);
 
   // signup method.
   async function signup(signupData) {
@@ -50,7 +55,7 @@ function App() {
         if (token) {
           try {
             let { username } = decodeToken(token);
-            console.log("username: " + username);
+            // console.log("username: " + username);
             // put the token on the Api class so it can use it to call the API.
             JoblyApi.token = token;
             let currentUser = await JoblyApi.getCurrentUser(username);

@@ -31,7 +31,7 @@ const CompanyDetails = () => {
         {company.jobs.map((j) => (
           <li>
             <JobCard
-              key={j.title}
+              key={j.id + j.title}
               companyName={company.name}
               title={j.title}
               equity={j.equity}

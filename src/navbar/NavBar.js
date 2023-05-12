@@ -5,10 +5,9 @@ import UserContext from "../auth/UserContext";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
 const NavBar = ({ logout }) => {
-  console.log("navbar loaded");
   const { currentUser } = useContext(UserContext);
 
-  if (!currentUser.username || currentUser.username === "testuser") {
+  if (currentUser && currentUser.username !== "testuser") {
     return (
       <div>
         <Navbar className="navbar">
@@ -27,10 +26,9 @@ const NavBar = ({ logout }) => {
               <NavLink to="/profile">Profile</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/signup">Sign Up</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/" onClick={logout}>
+                Logout, {currentUser.username}
+              </NavLink>
             </NavItem>
           </Nav>
         </Navbar>
@@ -55,9 +53,10 @@ const NavBar = ({ logout }) => {
               <NavLink to="/profile">Profile</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/" onClick={logout}>
-                Logout, {currentUser.username}
-              </NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/login">Login</NavLink>
             </NavItem>
           </Nav>
         </Navbar>
