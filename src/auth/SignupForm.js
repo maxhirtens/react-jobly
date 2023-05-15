@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 function SignupForm({ signup }) {
   const [formData, setFormData] = useState({
@@ -9,9 +10,12 @@ function SignupForm({ signup }) {
     email: "",
   });
 
+  const navigate = useNavigate();
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     await signup(formData);
+    navigate("/");
   }
 
   /** Update form data field */
@@ -23,7 +27,7 @@ function SignupForm({ signup }) {
   return (
     <div className="SignupForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">Sign Up</h2>
+        <h2 className="mb-3">Sign Up for Jobly</h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>

@@ -22,7 +22,8 @@ const Jobs = () => {
   if (!jobs) return <Loading />;
 
   return (
-    <section className="col-md-8">
+    <div className="container text-center">
+      <h1>All Available Jobs</h1>
       <div>
         {jobs.map((j) => (
           <JobCard
@@ -34,7 +35,7 @@ const Jobs = () => {
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -11,40 +11,45 @@ const Companies = () => {
 
   // get companies from API.
   async function searchCompanies(name) {
-        console.log(`searching API for: ${name ?? 'all companies'}`)
-        let companies = await JoblyApi.getCompanies(name)
-        setCompanies(companies);
+    console.log(`searching API for: ${name ?? "all companies"}`);
+    let companies = await JoblyApi.getCompanies(name);
+    setCompanies(companies);
   }
 
   // get companies from API on mount.
   useEffect(() => {
-    console.log('usEffect on Companies Page');
+    console.log("usEffect on Companies Page");
     searchCompanies();
   }, []);
 
   // i'm not sure why app is broken if i don't return this...
   if (!companies) return <Loading />;
-  
+
   // Response if search turns up empty.
-  if(!companies.length) return <p>No companies found. <Link to="/">Try Again</Link></p>
+  if (!companies.length)
+    return (
+      <p>
+        No companies found. <Link to="/">Try Again</Link>
+      </p>
+    );
 
   // map through list and create cards for each company.
   return (
-    <section className="col-md-8">
+    <div className="container text-center">
       <div>
         <SearchForm searchFor={searchCompanies} />
-        {companies.map(c => (
+        {companies.map((c) => (
           <CompanyCard
-              key={c.handle}
-              handle={c.handle}
-              name={c.name}
-              description={c.description}
-              logoUrl={c.logoUrl}
+            key={c.handle}
+            handle={c.handle}
+            name={c.name}
+            description={c.description}
+            logoUrl={c.logoUrl}
           />
         ))}
       </div>
-    </section>
+    </div>
   );
-}
+};
 
 export default Companies;

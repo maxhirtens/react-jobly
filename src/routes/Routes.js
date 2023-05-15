@@ -24,7 +24,7 @@ const RoutesList = ({ signup, login }) => {
           element={PrivateRoute(CompanyDetails)}
         ></Route>
         <Route path="/jobs" element={PrivateRoute(Jobs)}></Route>
-        <Route path="/profile" element={<ProfileForm />}></Route>
+        <Route path="/profile" element={PrivateRoute(ProfileForm)}></Route>
         <Route path="/" element={<Navigate to="/" />} />
       </Routes>
     </div>

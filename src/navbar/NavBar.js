@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import { Navbar, Nav, NavItem } from "reactstrap";
 
 const NavBar = ({ logout }) => {
   const { currentUser } = useContext(UserContext);
@@ -10,56 +9,60 @@ const NavBar = ({ logout }) => {
   if (currentUser && currentUser.username !== "testuser") {
     return (
       <div>
-        <Navbar className="navbar">
-          <NavLink to="/" className="navbar-brand">
+        <nav className="Navigation navbar navbar-expand-md">
+          <Link className="navbar-brand" to="/">
             Jobly
-          </NavLink>
-
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink to="/companies">Companies</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/jobs">Jobs</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/profile">Profile</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/" onClick={logout}>
-                Logout, {currentUser.username}
+          </Link>
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/companies">
+                Companies
               </NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
+            </li>
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/jobs">
+                Jobs
+              </NavLink>
+            </li>
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/profile">
+                Profile
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={logout}>
+                Logout, {currentUser.firstName}
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
   } else {
     return (
       <div>
-        <Navbar className="navbar">
-          <NavLink to="/" className="navbar-brand">
+        <nav className="Navigation navbar navbar-expand-md">
+          <Link className="navbar-brand" to="/">
             Jobly
-          </NavLink>
-
-          <Nav className="ml-auto" navbar>
-            <NavItem>
+          </Link>
+          <ul className="navbar-nav ml-auto">
+            <li>
               <NavLink to="/companies">Companies</NavLink>
-            </NavItem>
-            <NavItem>
+            </li>
+            <li>
               <NavLink to="/jobs">Jobs</NavLink>
-            </NavItem>
-            <NavItem>
+            </li>
+            <li>
               <NavLink to="/profile">Profile</NavLink>
-            </NavItem>
-            <NavItem>
+            </li>
+            <li>
               <NavLink to="/signup">Sign Up</NavLink>
-            </NavItem>
-            <NavItem>
+            </li>
+            <li>
               <NavLink to="/login">Login</NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
   }

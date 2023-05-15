@@ -23,7 +23,7 @@ const CompanyDetails = () => {
   if (!company) return <Loading />;
 
   return (
-    <section className="CompanyJobCards col-md-8">
+    <section className="CompanyJobCards container text-center">
       <h3>{company.name}</h3>
       <p>{company.description}</p>
       <ul>

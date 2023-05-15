@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: rgb(179, 202, 224);   
+  background-color: rgb(225, 221, 209);   
 }
 
 .App-logo {
@@ -32,15 +32,6 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .loading {
   text-align: center;
   font-size: 4rem;
@@ -49,4 +40,8 @@ body {
 
 li {
     list-style: none;
+}
+
+input {
+  margin-bottom: 10px;
 }

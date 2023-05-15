@@ -10,7 +10,6 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import "./App.css";
 
 // key for localStorage.
-// why do i need export here?
 export const TOKEN_KEY = "jobly-token";
 
 function App() {
@@ -68,9 +67,7 @@ function App() {
         setIsLoading(false);
       }
 
-      // set infoLoaded to false while async getCurrentUser runs; once the
-      // data is fetched (or even if an error happens!), this will be set back
-      // to false to control the spinner.
+      // show loading screen until effect gets user.
       setIsLoading(true);
       getCurrentUser();
     },
