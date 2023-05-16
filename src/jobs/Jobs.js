@@ -28,6 +28,7 @@ const Jobs = () => {
         {jobs.map((j) => (
           <JobCard
             key={j.id}
+            id={j.id}
             companyName={j.companyName}
             title={j.title}
             salary={j.salary}

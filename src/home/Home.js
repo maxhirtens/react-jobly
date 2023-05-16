@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../auth/UserContext";
 import { Link } from "react-router-dom";
-import JobCard from "../jobs/JobCard";
+import JoblyApi from "../api";
+import Loading from "../helpers/Loading";
 
 function Home() {
   const { currentUser } = useContext(UserContext);
@@ -10,9 +11,6 @@ function Home() {
     return (
       <div className="container text-center">
         <h3>Welcome to Jobly, {currentUser.firstName}!</h3>
-        <br></br>
-        <h6>Jobs You've Applied To:</h6>
-        <p>{currentUser.jobs ?? "No job applications yet"}</p>
       </div>
     );
   }

@@ -32,6 +32,7 @@ const CompanyDetails = () => {
           <li>
             <JobCard
               key={j.id + j.title}
+              id={j.id}
               companyName={company.name}
               title={j.title}
               equity={j.equity}

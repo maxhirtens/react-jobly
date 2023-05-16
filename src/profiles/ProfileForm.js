@@ -13,6 +13,7 @@ const ProfileForm = () => {
     lastName: currentUser.lastName,
     email: currentUser.email,
     username: currentUser.username,
+    applications: currentUser.applications,
     password: "",
   });
 

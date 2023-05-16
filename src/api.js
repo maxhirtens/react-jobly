@@ -52,6 +52,12 @@ class JoblyApi {
     return res.jobs;
   }
 
+  // Get all jobs.
+  static async getJob(id) {
+    let res = await this.request(`jobs/${id}`);
+    return res.job;
+  }
+
   // Get company details.
 
   static async getCompany(handle) {
@@ -76,6 +82,11 @@ class JoblyApi {
   static async saveProfile(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
+  }
+
+  // apply to a job, store in state.
+  static async applyToJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post");
   }
 }
 

@@ -16,6 +16,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_KEY);
+  const [appliedFor, setAppliedFor] = useState(new Set([]));
 
   // signup method.
   async function signup(signupData) {
@@ -47,7 +48,7 @@ function App() {
     setToken(null);
   }
 
-  // load user info from API.
+  // load user info from API when token changes.
   useEffect(
     function loadUser() {
       async function getCurrentUser() {
@@ -74,13 +75,23 @@ function App() {
     [token]
   );
 
+  const applyToJob = (id) => {
+    console.log("applying to job");
+    try {
+      JoblyApi.applyToJob(currentUser.username, id);
+      setAppliedFor(new Set([...appliedFor, id]));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <UserContext.Provider value={{ currentUser, setCurrentUser, applyToJob }}>
         <div className="App">
           <NavBar logout={logout} />
           <RoutesList login={login} signup={signup} />
