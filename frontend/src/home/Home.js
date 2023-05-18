@@ -6,6 +6,7 @@ import Loading from "../helpers/Loading";
 
 function Home() {
   const { currentUser } = useContext(UserContext);
+  console.log("test" + process.env.REACT_APP_BASE_URL);
 
   if (currentUser && currentUser.username !== "testuser") {
     return (
