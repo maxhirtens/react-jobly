@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import UserContext from "../auth/UserContext";
 import { Link } from "react-router-dom";
-import JoblyApi from "../api";
-import Loading from "../helpers/Loading";
 
 function Home() {
   const { currentUser } = useContext(UserContext);
