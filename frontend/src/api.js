@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost:10000" || "http://localhost:3001";
+const BASE_URL = "http://localhost:10000" || "http://localhost:3001";
 
 /** API Class.
  *
